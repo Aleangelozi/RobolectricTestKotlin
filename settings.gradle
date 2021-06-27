@@ -1,0 +1,2 @@
+rootProject.name = "RobolectricTestKotlin"
+include ':app'
