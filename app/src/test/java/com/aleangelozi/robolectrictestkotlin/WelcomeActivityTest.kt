@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import com.aleangelozi.robolectrictestkotlin.ui.login.LoginActivity
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
@@ -13,10 +14,15 @@ import org.robolectric.Shadows.shadowOf
 
 @RunWith(RobolectricTestRunner::class)
 class WelcomeActivityTest {
+    private lateinit var activity: WelcomeActivity
+
+    @Before
+    fun setup() {
+        activity = Robolectric.setupActivity(WelcomeActivity::class.java)
+    }
 
     @Test
     fun clickingLogin_shouldStartLoginActivity() {
-        val activity : WelcomeActivity = Robolectric.setupActivity(WelcomeActivity::class.java)
         activity.findViewById<View>(R.id.login).performClick()
 
         val expectedIntent = Intent(activity, LoginActivity::class.java)
